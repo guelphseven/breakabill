@@ -81,7 +81,7 @@ div.addcontainer button
 div.peoplecontainer
 {
 	width: 337px;
-	min-height: 160px;
+	min-height: 225px;
 	float: right;
 	margin-right: 30px;
 	border: 1px solid black;
@@ -92,6 +92,7 @@ div.peoplecontainer.mobile
 	float: none;
 	margin: 0px auto;
 	margin-bottom: 30px;
+	min-height: 160px;
 }
 div.personcontainer
 {
@@ -141,6 +142,13 @@ div.rightfield
 {
 	float: right;
 	width: 227px;
+}
+input[type="text"]#person-amount-0
+{
+	width: 50px;
+	border: 1px solid black;
+	margin: 0px;
+	padding: 0px;
 }
 input[type="text"].moneyslice
 {

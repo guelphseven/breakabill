@@ -53,19 +53,24 @@
 				<br/>
 				<p>Bill Title:<input id="billName" value="<?php if( isset($_REQUEST['billName']) ) { echo $_REQUEST['billName']; } ?>" /></p>
 				<br/>
-				<p>Name: <input id="billMaker" value="<?php if( isset($_REQUEST['name']) ) { echo $_REQUEST['name']; } ?>"/></p>
+				<p>Bill Total: <input id="billAmount" type="number" min="0" value="<?php if( isset($_REQUEST['bill']) ) { echo $_REQUEST['bill']; }else{echo 0;} ?>"/></p>
+				<br/>
+				<p>Due: <input type="text" id="datepicker"></p>
+				<br/>
+				<p>Your Name: <input id="billMaker" value="<?php if( isset($_REQUEST['name']) ) { echo $_REQUEST['name']; } ?>"/></p>
 				<br/>
 				<p>Email: <input id="makerEmail" value="<?php if( isset($_REQUEST['email']) ) { echo $_REQUEST['email']; } ?>"></p>
 				<br/>
-				<p>Amount: <input id="billAmount" type="number" min="0" value="<?php if( isset($_REQUEST['bill']) ) { echo $_REQUEST['bill']; }else{echo 0;} ?>"/></p>
+				<p>Your Amount: $<input id="person-amount-0" value="0.00"></p>
 				<br/>
-				<p>Due: <input type="text" id="datepicker"></p>
+				<p><div id="person-slider-0"></div></p>
 				<br/>
 				<p>
 					<button style="float:left;" id="save">Save</button>
 					<button style="float:right;" id="send">Send</button>
 				</p>
 				<br/>
+				<input type='hidden' id='person-deleted-0' value='0'/>
 		</div>
 		<div class="right" id="rightpane">
 				<div class="peoplecontainer" id="people"></div>

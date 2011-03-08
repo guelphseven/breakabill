@@ -1,9 +1,26 @@
 var remain = 0.0;
 var last = new Array();
 var max_sizes = new Array();
+var hasAmount = false;
 $('body').ready(function()
 {
 	checkSize();
+	$('#person-slider-0').slider({		
+		change: function(event, ui){checkSlide(event, ui, 0);},
+		range: "min",
+		min: 0,
+		max: 1,
+		step: 0.01,
+		disabled: true
+	});
+	//
+	$('#person-amount-0').change(function(e)
+	{
+		personAmountChange(e, 0);
+	});
+	last[0] = 0;
+	$('#person-slider-0').css('width', '90%');
+	$('#person-slider-0').css('margin', 'auto');
 	$(window).resize(function(e)
 	{
 		checkSize();
@@ -14,57 +31,43 @@ $('body').ready(function()
 	});
 	$('#billAmount').change(function(e)
 	{
-		updateAmount(e);
+		updateAmount();
 	});
+	if ($('#billAmount').val() != 0)
+	{
+		updateAmount();
+	}
 	$('#save').click(function(e)
 	{
-		var json = {
-			billName : $('#billName').val(),
-			billMaker : $('#billMaker').val(),
-			makerEmail : $('#makerEmail').val(),
-			duedate : $('#datepicker').val(),
-			total : ($('#billAmount').val()),
-			included : 1,
-			people : []
-			};
+	var json = {
+		billName : $('#billName').val(),
+		billMaker : $('#billMaker').val(),
+		billAmount : $('#billAmount').val(),
+		makerEmail : $('#makerEmail').val(),
+		duedate : $('#datepicker').val(),
+		total : ($('#person-amount-0').val()),
+		people : []
+		};
+		
+	if (isNaN(json.total)) json.total = 0;
+	var total = parseInt($('#total-people').val());
+
+	for (i=0; i<=total; i++)
+	{
+		if (parseInt($('#person-deleted-'+i).val()) == 0)
+		{
+			//json.people[i].push();
+			var the_name = $('#person-name-'+i).val();
+			var the_email = $('#person-email-'+i).val();
+			var the_total = $('#person-amount-'+i).val();
 			
-		if (isNaN(json.total)) json.total = 0;
-		alert(json.total);
-		var total = parseInt($('#total-people').val());
-		//json.people = new Array();
-		var amount = 0;
-		for (i=0; i<=total; i++)
-		{
-			if (parseInt($('#person-deleted-'+i).val()) == 0)
-			{
-				//json.people[i].push();
-				var the_name = $('#person-name-'+i).val();
-				var the_email = $('#person-email-'+i).val();
-				
-				json.people.push( {
-					name : the_name,
-					email : the_email
-				});
-					/*
-				var temp = new Array();
-				temp['name'] = $('#person-name-'+i).val();
-				temp['email'] = $('#person-email-'+i).val();
-				json['people'][i.toString()] = (temp);
-				*/
-				amount++;
-			}
+			json.people.push( {
+				name : the_name,
+				email : the_email,
+				total : the_total
+			});
 		}
-		var totalamount = amount;
-		//if (json['included'] == 1) totalamount++;
-		if(json.included == 1) totalamount++;
-		//var perperson = json['total'] / totalamount;
-		var perperson = json.total / totalamount;
-		//alert(json.total + " / " + totalamount + " = " + perperson);
-		for (i=0; i<total; i++)
-		{
-			//json['people'][i.toString()]['amount'] = perperson.toString();
-			json.people[i].total = perperson;
-		}
+	}
 
 		var test = JSON.stringify(json);
 		$.ajax({
@@ -86,17 +89,16 @@ function sendMail(e)
 	var json = {
 		billName : $('#billName').val(),
 		billMaker : $('#billMaker').val(),
+		billAmount : $('#billAmount').val(),
 		makerEmail : $('#makerEmail').val(),
 		duedate : $('#datepicker').val(),
-		total : ($('#billAmount').val()),
-		included : 1,
+		total : ($('#person-amount-0').val()),
 		people : []
 		};
 		
 	if (isNaN(json.total)) json.total = 0;
 	var total = parseInt($('#total-people').val());
-	//json.people = new Array();
-	var amount = 0;
+
 	for (i=0; i<=total; i++)
 	{
 		if (parseInt($('#person-deleted-'+i).val()) == 0)
@@ -104,30 +106,14 @@ function sendMail(e)
 			//json.people[i].push();
 			var the_name = $('#person-name-'+i).val();
 			var the_email = $('#person-email-'+i).val();
+			var the_total = $('#person-amount-'+i).val();
 			
 			json.people.push( {
 				name : the_name,
-				email : the_email
+				email : the_email,
+				total : the_total
 			});
-				/*
-			var temp = new Array();
-			temp['name'] = $('#person-name-'+i).val();
-			temp['email'] = $('#person-email-'+i).val();
-			json['people'][i.toString()] = (temp);
-			*/
-			amount++;
 		}
-	}
-	var totalamount = amount;
-	//if (json['included'] == 1) totalamount++;
-	if(json.included == 1) totalamount++;
-	//var perperson = json['total'] / totalamount;
-	var perperson = json.total / totalamount;
-	//alert(json.total + " / " + totalamount + " = " + perperson);
-	for (i=0; i<total; i++)
-	{
-		//json['people'][i.toString()]['amount'] = perperson.toString();
-		json.people[i].total = perperson;
 	}
 
 	var test = JSON.stringify(json);
@@ -169,13 +155,27 @@ function addPerson()
 	</div>\
 	");
 	$('#people').find("button").button();
-	$('#person-slider-'+current).slider({
-		change: function(event, ui){checkSlide(event, ui, current)},
-		range: "min",
-		min: 0,
-		max: $('#billAmount').val(),
-		step: 0.01
-	});
+	if (hasAmount == true)
+	{
+		$('#person-slider-'+current).slider({
+			change: function(event, ui){checkSlide(event, ui, current)},
+			range: "min",
+			min: 0,
+			max: $('#billAmount').val(),
+			step: 0.01
+		});
+	}
+	else
+	{
+		$('#person-slider-'+current).slider({
+			change: function(event, ui){checkSlide(event, ui, current)},
+			range: "min",
+			min: 0,
+			max: 1,
+			step: 0.01,
+			disabled: true
+		});
+	}
 	$('#person-amount-'+current).change(function(e)
 	{
 		personAmountChange(e, current);
@@ -218,53 +218,51 @@ function checkSize()
 		$('#maincontainer').removeClass("mobile");
 	}
 }
-function updateAmount(e)
+function updateAmount()
 {
-	resetAmounts();
 	remain = $('#billAmount').val();
 	var slider = "#person-slider-";
 	var deleted = "#person-deleted-";
 	var numsliders = $('#total-people').val();
 	var total = remain;
 	var percents = new Array();
-	for (i=1; i<=numsliders; i++)
+	if (hasAmount == false)
+	{
+		hasAmount = true;
+		for (i=0; i<=numsliders; i++)
+		{
+			$('#person-slider-'+i).slider("option", "disabled", false);
+		}
+	}
+	for (i=0; i<=numsliders; i++)
 	{
 		if ($('body').find(deleted+i).val()==0)
 		{
 			value = "#person-amount-"+i;
 			//slidervalue = $('body').find(slider+i).slider("value");
 			percents[i] = $(slider+i).slider("value") / $(slider+i).slider("option", "max");
-			alert(percents[i]*total);
+			//alert(percents[i]*total);
 			//$(slider+i).val(total * percent);
 			howmuch = total * percents[i];
 			remain -= howmuch;
+			max_sizes[i] = Infinity;
 			//$('body').find(value).val(howmuch);
 		}
 		
 	}
-	setMax();
-	for (i=1; i<=numsliders; i++)
+	//alert(remain);
+	
+	for (i=0; i<=numsliders; i++)
 	{
 		if ($('body').find(deleted+i).val()==0)
 		{
 			$(slider+i).slider("option", "max", total);
+			//alert(percents[i]*total);
 			$(slider+i).slider("value", percents[i]*total);
+			max_sizes[i] = 0;
 		}
 	}
-	
-}
-function resetAmounts()
-{
-	var slider = "#person-slider-";
-	var deleted = "#person-deleted-";
-	var amount = "#person-amount-";
-	var numsliders = $('#total-people').val();
-	var total = $('#billAmount').val();
-	var percent_remain = remain / total;
-	for (i=1; i<=numsliders; i++)
-	{
-
-	}
+	setMax();
 }
 function setMax()
 {
@@ -273,10 +271,11 @@ function setMax()
 	var numsliders = $('#total-people').val();
 	var total = $('#billAmount').val();
 	//alert(percent_remain);
-	for (i=1; i<=numsliders; i++)
+	for (i=0; i<=numsliders; i++)
 	{
 		if ($('body').find(deleted+i).val()==0)
 		{
+			if (max_sizes[i] == Infinity) return;
 			//$('body').find(slider+i).slider("max", $('body').find(slider+i).slider("value") + percent_remain);
 			//$('body').find("person-email-"+i).val($('body').find(slider+i).slider("value") + percent_remain*1000000);
 			max_sizes[i] = $('body').find(slider+i).slider("value") + remain;
@@ -308,14 +307,18 @@ function personAmountChange(event, number)
 		else
 		{
 			//var percent = (amount / total) *1000000;
-			remain -= (amount - last_amount);
+			remain -= (amount - last[number]);
 			last[number] = amount;
 			$(slider).slider("value", amount);
 			setMax();
 		}
 	}
-	else
+	else if (amount < last[number])
 	{
+		var delta = last[number] - amount;
+		$(slider).slider("value", amount);
+		last[number] = amount;
+		setMax();
 	}
 }
 function checkSlide(event, ui, number)

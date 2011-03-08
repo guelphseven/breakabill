@@ -4,7 +4,7 @@
 	background-color: #f0fff0;// #eee;
 	float:left;
 	width: 300px;
-	height: 290px;
+	height: 270px;
 //	min-width:300px;
 //	min-height:400px;
 	margin-left: 20px;
@@ -12,16 +12,12 @@
 	border: 1px solid black;
 	border-radius: 15px;
 }
-#left#person-slider-0
-{
-	width: 230px;
-}
 input{
 	float:right;
 	width:130px;
 }
 #left p{
-	width:230px;
+	width:200px;
 	margin: 0 auto;
 }
 #left p.buttons{
