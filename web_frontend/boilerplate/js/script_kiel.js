@@ -52,7 +52,7 @@ $('body').ready(function()
 	if (isNaN(json.total)) json.total = 0;
 	var total = parseInt($('#total-people').val());
 
-	for (i=0; i<=total; i++)
+	for (i=1; i<=total; i++)
 	{
 		if (parseInt($('#person-deleted-'+i).val()) == 0)
 		{
@@ -99,7 +99,7 @@ function sendMail(e)
 	if (isNaN(json.total)) json.total = 0;
 	var total = parseInt($('#total-people').val());
 
-	for (i=0; i<=total; i++)
+	for (i=1; i<=total; i++)
 	{
 		if (parseInt($('#person-deleted-'+i).val()) == 0)
 		{
