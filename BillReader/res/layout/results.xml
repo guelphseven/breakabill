@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             android:layout_centerInParent="true">
+
+    <RelativeLayout
+        android:layout_width="fill_parent" 
+        android:layout_height="fill_parent">
+
+        <!-- Buttons layout (adding buttons from code)-->
+        <LinearLayout
+            android:id="@+id/resultsactivity_buttons_layout"
+            android:orientation="vertical"
+            android:layout_width="48px"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true">
+            
+            <Button
+           		android:id="@+id/post_button"
+           		android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Post">
+       		</Button>
+       		
+        </LinearLayout>
+        
+        
+        
+       <!-- Status layout -->
+       <LinearLayout
+            android:id="@+id/resultsactivity_bottom_layout"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="20px"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@id/resultsactivity_buttons_layout">
+            
+    
+            <TextView
+                android:id="@+id/resultsactivity_status_text"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="@string/resultsactivity_status_text">
+            </TextView>
+            
+       </LinearLayout>   
+       
+       <!-- Word info layout -->
+       <LinearLayout
+            android:id="@+id/resultsactivity_word_layout"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="48px"
+            android:layout_toLeftOf="@id/resultsactivity_buttons_layout"
+            android:layout_above="@id/resultsactivity_bottom_layout">
+       </LinearLayout>   
+       
+            
+        <!-- Edit text layout -->
+        <LinearLayout
+            android:id="@+id/resultsactivity_edit_layout"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toLeftOf="@id/resultsactivity_buttons_layout"
+            android:layout_above="@id/resultsactivity_word_layout">
+
+            <EditText
+                android:id="@+id/resultsactivity_edit_text1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:editable="false"
+                android:visibility="visible"
+                android:cursorVisible="false"
+                android:gravity="top">
+            </EditText>
+
+            <EditText
+                android:id="@+id/resultsactivity_edit_text2"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:editable="true"
+                android:visibility="gone"
+                android:gravity="top">
+            </EditText>
+
+        </LinearLayout>
+       
+
+    </RelativeLayout>
+
+    <!--  Sliding drawer for display image -->
+    <SlidingDrawer
+        android:id="@+id/resultsactivity_drawer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:handle="@+id/resultsactivity_handle"
+        android:content="@+id/resultsactivity_content"
+        android:orientation="horizontal">
+        
+        <LinearLayout
+             android:id="@id/resultsactivity_handle"
+             android:layout_width="fill_parent"
+             android:orientation="horizontal"
+             android:layout_height="fill_parent">
+     
+            <ImageView android:id="@+id/resultsactivity_IconSlide" 
+                       android:layout_width="fill_parent" 
+                       android:layout_height="fill_parent"
+                       android:layout_centerVertical="true"
+                       android:layout_centerHorizontal="true"
+                       android:src="@drawable/left_48">
+            </ImageView>
+
+        </LinearLayout>
+        
+        <LinearLayout
+             android:id="@id/resultsactivity_content"
+             android:layout_width="fill_parent"
+             android:orientation="horizontal"
+             android:layout_height="fill_parent">
+             
+             
+            <!-- this is the picture to be displayed (the input to ocr) -->
+            <ImageView android:id="@+id/resultsactivity_slidingDrawerPicture" 
+                       android:layout_width="fill_parent" 
+                       android:layout_height="fill_parent"
+                       android:src="@drawable/left_48"
+                       android:layout_centerVertical="true"
+                       android:layout_centerHorizontal="true"
+                       android:orientation="horizontal">
+            </ImageView>
+            
+        </LinearLayout>
+    
+    </SlidingDrawer> 
+
+ </RelativeLayout>

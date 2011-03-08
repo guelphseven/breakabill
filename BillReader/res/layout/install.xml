@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent">
+
+
+		 <LinearLayout
+				android:id="@+id/installactivity_ProgressBarLayout" 
+				android:layout_width="fill_parent" 
+				android:layout_height="wrap_content"
+				android:layout_alignParentBottom="true"
+				android:orientation="vertical"
+				>
+				
+				<TextView
+					android:id="@+id/installactivity_status_text"
+		    		android:layout_width="fill_parent"
+		    		android:layout_height="wrap_content"
+					android:paddingLeft="5px"
+					android:paddingRight="5px"
+					android:paddingTop="5px"
+					android:paddingBottom="5px"
+					android:text="Installing"
+		    		>
+				</TextView>
+				<ProgressBar
+					android:id="@+id/installactivity_progressbar"
+					android:layout_width="fill_parent" 
+					android:layout_height="wrap_content"
+					style="?android:attr/progressBarStyleHorizontal"
+					android:paddingLeft="5px"
+					android:paddingRight="5px"
+					android:paddingTop="5px"
+					android:paddingBottom="5px"
+					>
+				</ProgressBar>
+				<Button
+					android:id="@+id/installactivity_buttondone"
+					android:layout_width="wrap_content" 
+					android:layout_height="fill_parent"
+                 	android:layout_centerInParent="true"
+                 	android:layout_gravity="left|center_vertical"
+					android:text="Start application"
+				    android:visibility="gone"
+				>
+				</Button>
+		 </LinearLayout>
+		
+		 <LinearLayout
+				android:id="@+id/installactivity_TextLayout" 
+				android:layout_width="fill_parent" 
+				android:layout_height="fill_parent"
+				android:orientation="horizontal"
+				android:layout_above="@id/installactivity_ProgressBarLayout"
+				>
+		
+				<ImageView
+					android:id="@+id/installactivity_imageview" 
+					android:layout_width="130px" 
+					android:layout_height="160px"
+					android:src="@drawable/gmstart"
+					android:paddingLeft="5px"
+					android:paddingRight="5px"
+					android:paddingTop="5px"
+					android:paddingBottom="5px"
+                 	android:layout_centerInParent="true"
+					>
+				
+				</ImageView>
+				
+				<EditText
+					android:id="@+id/installactivity_welcome_text"
+		    		android:layout_width="fill_parent"
+		    		android:layout_height="fill_parent"
+		    		android:editable="false"
+		    		android:cursorVisible="false"
+		    		android:text="@string/installactivity_status_text"
+		    		style="?android:attr/textViewStyle"
+		    		android:background="@color/status_view"
+		    		android:textColor="@color/status_text"
+					android:paddingLeft="5px"
+					android:paddingRight="5px"
+					android:paddingTop="5px"
+					android:paddingBottom="5px"
+					android:scrollbarAlwaysDrawVerticalTrack="true"
+					android:scrollbarSize="5px"
+					android:scrollbars="vertical" 
+		    		>
+				</EditText>
+			   
+		 </LinearLayout>
+
+
+
+</RelativeLayout>

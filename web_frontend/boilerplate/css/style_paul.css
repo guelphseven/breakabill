@@ -1,0 +1,40 @@
+/*cssness*/
+
+#left {
+	background-color: #f0fff0;// #eee;
+	float:left;
+	width: 300px;
+	height: 230px;
+//	min-width:300px;
+//	min-height:400px;
+	margin-left: 30px;
+	margin-bottom: 30px;
+	border: 1px solid black;
+	border-radius: 15px;
+}
+input{
+	float:right;
+	width:130px;
+}
+#left p{
+	width:200px;
+	margin: 0 auto;
+}
+#left p.buttons{
+	width: 60px;
+}
+#left button
+{
+	width: 45%;
+}
+#left button.add
+{
+	width: 100%;
+}
+.peoplecontainer{
+	border-top-left-radius:15px;
+	border-bottom-left-radius:15px;
+}
+#billamount{
+	max-width: 50px;
+}

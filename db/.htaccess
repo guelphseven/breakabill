@@ -1,0 +1,8 @@
+Options -Indexes
+Options +FollowSymLinks
+Options -MultiViews
+
+#RewriteEngine   on
+#RewriteRule     ([^\/]*)\/_view\/([^\/]*)\/(.*) http://localhost:5984/$1/_view/$2/$3 [p]
+#RewriteRule     ([^\/]*)\/([^\/]*)\/(.*) http://localhost:5984/$1/$2\%2F$3 [p]
+#RewriteRule     (.*) http://localhost:5984/$1 [p]

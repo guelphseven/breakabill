@@ -1,0 +1,108 @@
+body
+{
+	background-color: #ddddff;
+}
+div.footer
+{
+	width: 800px;
+	height: 30px;
+	margin: 5px auto;
+}
+div.footer div.right
+{
+	float: right;
+	width: 600px;
+	text-align: right;
+	font-size: 11px;
+	color: #777777;
+	margin-right: 10px;
+}
+div.billcontainer
+{
+	width: 800px;
+	border: 1px solid #bbbbbb;
+	background-color: white;
+	margin: 0 auto;
+	margin-top: 35px;
+	height:100%;
+	overflow:hidden;
+}
+div.billcontainer h1
+{
+	font-size: 35px;
+	text-align: center;
+	margin: 10px;
+}
+div.right
+{
+	width: 400px;
+	float: right;
+	display: block;
+}
+div.addcontainer
+{
+	width: 353px;
+	height: 50px;
+	float: right;
+	margin-right: 30px;
+}
+div.addcontainer button
+{
+	width: 100%;
+}
+div.peoplecontainer
+{
+	width: 353px;
+	height: 360px;
+	float: right;
+	margin-right: 30px;
+	overflow-y: scroll;
+	display: inline-block;
+	border: 1px solid black;
+	margin-bottom: 30px;
+}
+div.personcontainer
+{
+	width: 325px;
+	height: 130px;
+	margin: 4px;
+	border: 2px solid #aaaaaa;
+	background-color: #dddddd;
+	display: block;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+}
+div.personcontainer button
+{
+	width: 60%;
+	margin: 20px auto;
+}
+div.fieldrow
+{
+	height: 23px;
+	margin: auto;
+	width: 321px;
+	display: block;
+	padding-top:3px;
+	overflow: hidden;
+}
+div.leftfield
+{
+	float: left;
+	width: 85px;
+	margin-left: 5px;
+}
+div.rightfield
+{
+	float: right;
+	width: 227px;
+}
+input[type="text"].personinput
+{
+	width: 225px;
+	height: 20px;
+	border: 1px solid black;
+	margin: 0px;
+	padding: 0px;
+}

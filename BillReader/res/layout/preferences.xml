@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ 
+ -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <PreferenceCategory android:title="@string/preferences_OCR_title">
+    <ListPreference
+    	android:key="preferences_set_OCR_language"
+    	android:title="@string/preferences_set_OCR_language"/>
+    <ListPreference
+    	android:key="preferences_speed_quality"
+    	android:title="@string/preferences_speed_quality"/>
+    <ListPreference
+    	android:key="preferences_download_language"
+    	android:title="@string/preferences_download_language"/>
+    <EditTextPreference
+    	android:key="preferences_min_overall_confidence"
+    	android:numeric="integer"
+    	android:maxLength="3"
+    	android:title="@string/preferences_min_overall_confidence"/>
+    <EditTextPreference
+    	android:key="preferences_min_word_confidence"
+    	android:numeric="integer"
+    	android:maxLength="3"
+    	android:title="@string/preferences_min_word_confidence"/>
+    <CheckBoxPreference
+        android:key="preferences_use_image_ligth_filter"
+        android:defaultValue="true"
+        android:title="@string/preferences_use_image_ligth_filter"/>
+    	
+
+    
+    	
+  </PreferenceCategory>
+  
+  <PreferenceCategory android:title="@string/preferences_general_title">
+    <CheckBoxPreference
+        android:key="preferences_skip_intro_at_startup"
+        android:defaultValue="true"
+        android:title="@string/preferences_skip_intro_at_startup"/>
+	 <Preference
+		android:key="preferences_translate_from"
+		android:title="@string/preferences_translate_from_settings"/>        
+	 <Preference
+		android:key="preferences_translate_to"
+		android:title="@string/preferences_translate_to_settings"/>        
+	 <Preference
+		android:key="preferences_restore_factory_settings"
+		android:title="@string/preferences_restore_factory_settings_title"/>        
+  </PreferenceCategory>
+
+</PreferenceScreen>

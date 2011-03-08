@@ -1,0 +1,87 @@
+#Day 2 Start
+
+## The idea...
+
+Today, for something a bit more visible and practical, we're going to build a bill splitting / dorm management application. We've got plans and a path to something minimally viable, and we're moving forward.
+
+## We've got a standard:
+
+JSON query is:
+
+{
+"bill": $billname, 
+"debtors": {
+	"0":{
+	    "name": $name,
+	    "email": $email,
+	    "amount": $amount
+	  }
+	"1":{
+	    "name": $name,
+	    "email": $email,
+	    "amount": $amount
+	  }
+	}
+"creator": $user,
+"total": $total,
+"due": $date
+}
+
+{
+	"bill": "february hydro", 
+	"debtors": {
+		"0": {
+		    "name": "Kiel",
+		    "email": "kiel.monk@gmail.com",
+		    "amount": 100
+		},
+		"1": {
+		    "name": "Martin",
+		    "email": "m.t.lindsay@gmail.com",
+		    "amount": 100
+		},
+		"2": {
+		    "name": "Chris",
+		    "email": "cstatham@uoguelph.ca",
+		    "amount": 100
+		},
+		"3": {
+		    "name": "Quincy",
+		    "email": "qjermyn@uoguelph.ca",
+		    "amount": 100
+		},
+		"4": {
+		    "name": "Paul",
+		    "email": "vilchez.paul@gmail.com",
+		    "amount": 100
+		},
+		"5": {
+		    "name": "Luke",
+		    "email": "lrewega@uoguelph.ca",
+		    "amount": 100
+		},
+		"6": {
+		    "name": "Wyatt",
+		    "email": "carss.w@gmail.com",
+		    "amount": 100
+		}
+	}
+	"creator": "Wyatt",
+	"total": 700,
+	"due": "2011-03-06 11:01:12"
+}
+
+{
+	"bill": "february hydro", 
+	"debtors": {
+		"0": {
+		    "name": "Kiel",
+		    "email": "kiel.monk@gmail.com",
+		    "amount": 100
+		}
+		}
+	}
+	"creator": "Wyatt",
+	"total": 700,
+	"due": "2011-03-06 11:01:12"
+}

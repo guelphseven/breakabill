@@ -1,0 +1,166 @@
+body
+{
+	background-color: #ddddff;
+}
+div.footer
+{
+	max-width: 800px;
+	min-width: 400px;
+	height: 30px;
+	margin: 5px auto;
+}
+div.footer.mobile
+{
+	width: 400px;
+}
+div.footer div.right
+{
+	float: right;
+	width: 600px;
+	text-align: right;
+	font-size: 11px;
+	color: #777777;
+	margin-right: 10px;
+}
+div.billcontainer
+{
+	max-width: 800px;
+	min-width: 400px;
+	border: 1px solid #bbbbbb;
+	background-color: white;
+	margin: 0 auto;
+	margin-top: 35px;
+	height:100%;
+	overflow: hidden;
+	display: block;
+}
+div.billcontainer.mobile
+{
+	width: 400px;
+}
+div.billcontainer h1
+{
+	font-size: 35px;
+	text-align: center;
+	margin: 10px;
+}
+div.right
+{
+	width: 400px;
+	float: right;
+	display: block;
+}
+div.right.mobile
+{
+	float: none;
+	margin-top: 30px;
+	margin: auto;
+}
+#left.mobile
+{
+	float: none;
+	margin: 0px auto;
+	margin-bottom: 30px;
+}
+div.addcontainer
+{
+	width: 337px;
+	height: 50px;
+	float: right;
+	margin-right: 30px;
+}
+div.addcontainer.mobile
+{
+	float: none;
+	margin: 0px auto;
+}
+div.addcontainer button
+{
+	width: 100%;
+}
+div.peoplecontainer
+{
+	width: 337px;
+	min-height: 160px;
+	float: right;
+	margin-right: 30px;
+	border: 1px solid black;
+	margin-bottom: 30px;
+}
+div.peoplecontainer.mobile
+{
+	float: none;
+	margin: 0px auto;
+	margin-bottom: 30px;
+}
+div.personcontainer
+{
+	width: 325px;
+	height: 120px;
+	margin: 4px;
+	border: 2px solid #aaaaaa;
+	background-color: #dddddd;
+	display: block;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+}
+div.personcontainer button
+{
+	width: 60%;
+	margin: 0px auto;
+}
+div.fieldrow
+{
+	height: 23px;
+	margin: auto;
+	width: 321px;
+	display: block;
+	padding-top:3px;
+	overflow: hidden;
+}
+div.fieldrow.buttonrow
+{
+	height: 40px;
+}
+div.leftfield
+{
+	float: left;
+	width: 85px;
+	margin-left: 5px;
+}
+div.leftfield.slice
+{
+	width: 125px;
+}
+div.rightfield.slice
+{
+	width: 187px;
+}
+div.rightfield
+{
+	float: right;
+	width: 227px;
+}
+input[type="text"].moneyslice
+{
+	width: 50px;
+	border: 1px solid black;
+	margin: 0px;
+	padding: 0px;
+}
+input[type="text"].personinput
+{
+	width: 225px;
+	height: 20px;
+	border: 1px solid black;
+	margin: 0px;
+	padding: 0px;
+}
+.ui-slider-horizontal .ui-slider-handle {
+
+}
+.ui-slider .ui-slider-handle {
+  height:1.6em;
+  width:0.8em;
+}
