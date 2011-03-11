@@ -76,7 +76,8 @@ $('body').ready(function()
 			data: "data="+test,
 			success: function(response)
 			{
-				alert(response);
+				//alert(response);
+				window.location = "home.php";
 			},
 			error: function ()
 			{
@@ -123,7 +124,8 @@ function sendMail(e)
 		data: "data="+test,
 		success: function(response)
 		{
-			alert(response);
+			alert("Messages sent.");
+			window.location = "home.php";
 		},
 		error: function ()
 		{

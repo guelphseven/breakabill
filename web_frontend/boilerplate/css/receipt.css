@@ -1,0 +1,52 @@
+body
+{
+	background-color: white;
+}
+div.clear
+{
+	clear: both;
+	font-size: 1px;
+	color: white;
+}
+div.receipt
+{
+	width: 400px;
+	margin: auto;
+	padding: 20px;
+}
+div.title
+{
+	width: 100%;
+	margin: 0;
+}
+div.title span
+{
+	margin: 5px auto;
+	float: left;
+	font-size: 25px;
+	font-weight: bold;
+}
+div.sheet
+{
+	width: 100%;
+	margin: 0;
+}
+div.sheet div.title
+{
+	color: black;
+	font-weight: bold;
+	float: left;
+	height: 20px;
+	width: 75px;
+}
+div.sheet div.field
+{
+	color: black;
+	float: left;
+	height: 20px;
+	width: 75px;
+}
+div.sheet div.field.red
+{
+	color: red;
+}

@@ -2,6 +2,7 @@ body
 {
 	background-color: #ddddff;
 }
+
 div.footer
 {
 	max-width: 800px;
@@ -22,6 +23,19 @@ div.footer div.right
 	color: #777777;
 	margin-right: 10px;
 }
+
+div.footer a
+{
+	color: #777777;
+	text-align: right;
+	font-size: 11px;
+	text-decoration: none;
+	
+}
+div.footer a:hover
+{
+	text-decoration: underline;
+}
 div.billcontainer
 {
 	max-width: 800px;
@@ -33,6 +47,7 @@ div.billcontainer
 	height:100%;
 	overflow: hidden;
 	display: block;
+	padding-bottom: 20px;
 }
 div.billcontainer.mobile
 {
@@ -43,6 +58,12 @@ div.billcontainer h1
 	font-size: 35px;
 	text-align: center;
 	margin: 10px;
+}
+div.billcontainer h3
+{
+	margin: auto;
+	text-align: center;
+	margin-bottom: 25px;
 }
 div.right
 {
@@ -171,4 +192,87 @@ input[type="text"].personinput
 .ui-slider .ui-slider-handle {
   height:1.6em;
   width:0.8em;
+}
+
+form
+{
+	width: 400px;
+	margin: 25px auto 0 auto;
+	display: block;
+}
+
+form input[type="text"]
+{
+	float: right;
+	width: 50%;
+	border: 1px solid black;
+	height: 20px;
+	margin-bottom: 5px;
+}
+form input[type="password"]
+{
+	float: right;
+	width: 50%;
+	border: 1px solid black;
+	height: 20px;
+	margin-bottom: 5px;
+}
+form label
+{
+	float: left;
+	width: 40%;
+	text-align: left;
+	margin: 1px;
+	height: 23px;
+	margin-bottom: 5px;
+}
+form input[type="submit"]
+{
+	margin: 10px 0 10px 0;
+	width: 150px;
+	float: right;
+}
+
+div.clear
+{
+	clear: both;
+	font-size: 1px;
+}
+div.controls
+{
+	float: left;
+	width: 350px;
+	
+}
+div.madeBills.title
+{
+	background-color: #aaaaaa;
+	color: white;
+	min-height: 20px;
+	text-align: center;
+}
+div.madeBills
+{
+	width: 400px;
+	float: right;
+	margin-right: 20px;
+	border: 1px solid #dddddd;
+	color: black;
+	min-height: 300px;
+}
+div.madeBills a
+{
+	display: block;
+	width: 100%;
+	text-align: left;
+	text-decoration: none;
+}
+div.madeBills a:hover
+{
+	text-decoration: underlined;
+}
+div.bill a
+{
+	margin-left: 10px;
+	margin-top: 5px;
 }
