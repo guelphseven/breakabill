@@ -55,6 +55,7 @@
   <div id="maincontainer" class="billcontainer">
     <header>
 	<h1>Break A Bill</h1>
+	<h3><?echo $_SESSION['name'];?> [ <a class="username" href="home.php"><?echo $_SESSION['username'];?></a> ] - create</h3>
     </header>
     
     <div id="main">
@@ -66,17 +67,15 @@
 				<br/>
 				<p>Due: <input type="text" id="datepicker"></p>
 				<br/>
-				<p>Your Name: <input id="billMaker" value="<?php if( isset($_SESSION['name']) ) { echo $_SESSION['name']; } ?>"/></p>
-				<br/>
-				<p>Email: <input id="makerEmail" value="<?php if( isset($_SESSION['email']) ) { echo $_SESSION['email']; } ?>"></p>
-				<br/>
 				<p>Your Amount: $<input id="person-amount-0" value="0.00"></p>
 				<br/>
 				<p><div id="person-slider-0"></div></p>
 				<br/>
+				<p><button id="ballance">Split Equal</button></p>
+				<br/>
 				<p>
 					<button style="float:left;" id="save">Save</button>
-					<button style="float:right;" id="send">Send</button>
+					<button style="float:right;" id="send">Email</button>
 				</p>
 				<br/>
 				<input type='hidden' id='person-deleted-0' value='0'/>
@@ -117,6 +116,7 @@
   	$(function() {
 		$( "#datepicker" ).datepicker();
 		$( "button" ).button();
+		$('#ballance').css('width', '100%');
 	});
   </script>
 

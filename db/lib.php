@@ -124,10 +124,10 @@ function deleteBill($billid)
 	return true;
 }
 
-function registerUser($username, $password)
+function registerUser($username, $password, $name, $email)
 {
 	$hash = md5($username.$password);
-	$query = "INSERT INTO users (username, hash) VALUES ('$username', '$hash');";
+	$query = "INSERT INTO users (username, hash, name, email) VALUES ('$username', '$hash', '$name', '$email');";
 	$result = mysql_query($query);
 	print_r($result);
 	

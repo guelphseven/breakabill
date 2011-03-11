@@ -52,9 +52,11 @@
     <div id="main">
 		<form method="POST" action="../../db/register.php">
 			<label for="username" accesskey="U">Username:</label><input type="text" name="username"/>
+			<label for="username" accesskey="U">Name:</label><input type="text" name="name"/>
+			<label for="username" accesskey="U">Email:</label><input type="text" name="email"/>
 			<label for="password" accesskey="P">Password:</label><input type="password" name="password"/>
 			<label for="confirm" accesskey="C">Confirm Password:</label><input type="password" name="confirm"/>
-			<input type="submit" value="Sign Up"/>
+			<a href="login.php">Login</a><input type="submit" value="Sign Up"/>
 		</form>
     </div>
     
@@ -83,8 +85,9 @@
 	});
   </script>-->
   <script>
-  	$(function() {
-		$( "button" ).button();
+  	$(document).ready(function() {
+		$( "input[type='submit']" ).button();
+		$("form a").button();
 	});
   </script>
 

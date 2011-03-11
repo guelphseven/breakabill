@@ -53,7 +53,7 @@
 		<form method="POST" action="checklogin.php">
 			<label for="username" accesskey="U">Username:</label><input type="text" name="username"/>
 			<label for="password" accesskey="P">Password:</label><input type="password" name="password"/>
-			<input type="submit" value="Login"/>
+			<a href="register.php">Register</a><input type="submit" value="Login"/>
 		</form>
     </div>
     
@@ -82,8 +82,9 @@
 	});
   </script>-->
   <script>
-  	$(function() {
-		$( "button" ).button();
+  	$(document).ready(function() {
+		$( "input[type='submit']" ).button();
+		$("form a").button();
 	});
   </script>
 

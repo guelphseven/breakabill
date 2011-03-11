@@ -11,7 +11,7 @@ div.clear
 div.receipt
 {
 	width: 400px;
-	margin: auto;
+	margin: 0;
 	padding: 20px;
 }
 div.title
@@ -37,7 +37,7 @@ div.sheet div.title
 	font-weight: bold;
 	float: left;
 	height: 20px;
-	width: 75px;
+	width: 125px;
 }
 div.sheet div.field
 {

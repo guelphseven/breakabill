@@ -58,7 +58,7 @@
   <div id="maincontainer" class="billcontainer">
     <header>
 	<h1>Break A Bill</h1>
-	<h3><?echo $_SESSION['username'];?> - home</h3>
+	<h3><?echo $_SESSION['name'];?> [ <a class="username" href="home.php"><?echo $_SESSION['username'];?></a> ] - home</h3>
     </header>
     
     <div id="main">

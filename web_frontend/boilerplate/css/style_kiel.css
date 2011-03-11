@@ -276,3 +276,22 @@ div.bill a
 	margin-left: 10px;
 	margin-top: 5px;
 }
+
+form a
+{
+	margin: 10px 0 10px 0;
+	width: 150px;
+	float: left;
+}
+
+form submit
+{
+	margin: 10px 0 10px 0;
+	width: 150px;
+	float: right;
+}
+
+a.username
+{
+	color: #444444;
+}

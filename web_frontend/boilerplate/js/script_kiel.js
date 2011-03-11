@@ -2,11 +2,13 @@ var remain = 0.0;
 var last = new Array();
 var max_sizes = new Array();
 var hasAmount = false;
+var lockScroll = false;
+var lockText = false;
 $('body').ready(function()
 {
 	checkSize();
 	$('#person-slider-0').slider({		
-		change: function(event, ui){checkSlide(event, ui, 0);},
+		change: function(event, ui){if (!lockScroll){checkSlide(event, ui, 0);}},
 		range: "min",
 		min: 0,
 		max: 1,
@@ -16,7 +18,10 @@ $('body').ready(function()
 	//
 	$('#person-amount-0').change(function(e)
 	{
-		personAmountChange(e, 0);
+		if (!lockText)
+		{
+			personAmountChange(e, 0);
+		}
 	});
 	last[0] = 0;
 	$('#person-slider-0').css('width', '90%');
@@ -37,6 +42,9 @@ $('body').ready(function()
 	{
 		updateAmount();
 	}
+	$('#ballance').click(function (e) {
+		setEqual();
+	});
 	$('#save').click(function(e)
 	{
 	var json = {
@@ -160,7 +168,7 @@ function addPerson()
 	if (hasAmount == true)
 	{
 		$('#person-slider-'+current).slider({
-			change: function(event, ui){checkSlide(event, ui, current)},
+			change: function(event, ui){if (!lockScroll){checkSlide(event, ui, current);}},
 			range: "min",
 			min: 0,
 			max: $('#billAmount').val(),
@@ -170,7 +178,7 @@ function addPerson()
 	else
 	{
 		$('#person-slider-'+current).slider({
-			change: function(event, ui){checkSlide(event, ui, current)},
+			change: function(event, ui){if (!lockScroll) {checkSlide(event, ui, current);}},
 			range: "min",
 			min: 0,
 			max: 1,
@@ -180,7 +188,7 @@ function addPerson()
 	}
 	$('#person-amount-'+current).change(function(e)
 	{
-		personAmountChange(e, current);
+		if (!lockText) {personAmountChange(e, current);}
 	});
 	//$('#person-slider-'+current).bind("slidechange", function(event, ui){checkSlide(event, ui, current);});
 	$('#person-slider-'+current).css('width', "90%");
@@ -222,12 +230,19 @@ function checkSize()
 }
 function updateAmount()
 {
+	if (parseFloat($('#billAmount').val()) > 10000)
+	{
+		alert ("Sorry, to split bills of this size you must register an enterprise account.");
+		$('#billAmount').val(0);
+		return;
+	}
 	remain = $('#billAmount').val();
 	var slider = "#person-slider-";
 	var deleted = "#person-deleted-";
 	var numsliders = $('#total-people').val();
 	var total = remain;
 	var percents = new Array();
+	lockText = true;
 	if (hasAmount == false)
 	{
 		hasAmount = true;
@@ -264,6 +279,7 @@ function updateAmount()
 			max_sizes[i] = 0;
 		}
 	}
+	lockText = false;
 	setMax();
 }
 function setMax()
@@ -280,7 +296,7 @@ function setMax()
 			if (max_sizes[i] == Infinity) return;
 			//$('body').find(slider+i).slider("max", $('body').find(slider+i).slider("value") + percent_remain);
 			//$('body').find("person-email-"+i).val($('body').find(slider+i).slider("value") + percent_remain*1000000);
-			max_sizes[i] = $('body').find(slider+i).slider("value") + remain;
+			max_sizes[i] = Math.round(($('body').find(slider+i).slider("value") + remain)*100)/100;
 		}
 	}
 }
@@ -289,13 +305,14 @@ function personAmountChange(event, number)
 	var slider = "#person-slider-"+number;
 	var value = "#person-amount-"+number;
 	var total = $('#billAmount').val();
-	var amount = parseInt($(value).val());
+	var amount = Math.round(parseInt($(value).val())*100)/100;
 	//var last_amount = total * (last[number]/1000000);
 	if (isNaN($(value).val()) || $(value).val() < 0)
 	{
 		return;
 	}
 	
+	//lockText = true;
 	max_amount = last[number] + remain;
 	if (amount > last[number])
 	{
@@ -322,6 +339,7 @@ function personAmountChange(event, number)
 		last[number] = amount;
 		setMax();
 	}
+	//lockText = false;
 }
 function checkSlide(event, ui, number)
 {
@@ -329,12 +347,13 @@ function checkSlide(event, ui, number)
 	var value = "#person-amount-"+number;
 	var total = $('#billAmount').val();
 	var slidervalue = $('body').find(slider).slider("value");
-	if (max_sizes[number] == null) max_sizes[number] = remain;
+	if (max_sizes[number] == null) max_sizes[number] = Math.round(remain*100)/100;
+	lockText = true;
 	if (slidervalue > last[number])
 	{
 		if (slidervalue > max_sizes[number])
 		{
-			$('body').find(slider).slider("value", max_sizes[number]);
+			$('body').find(slider).slider("value", Math.round(max_sizes[number]*100)/100);
 		}
 		else
 		{
@@ -358,4 +377,45 @@ function checkSlide(event, ui, number)
 		last[number] = slidervalue;
 		setMax();
 	}
+	lockText = false;
+}
+function findTotalPeople()
+{
+	var max = $('#total-people').val();
+	var count = 1;
+	var dis = "#person-deleted-";
+	for (i=1; i<=max; i++)
+	{
+		if ($(dis+i).val() == 0)
+		{
+			count++;
+		}
+	}
+	return count;
+}
+function setEqual()
+{
+	var total = findTotalPeople();
+	var amount = parseFloat($('#billAmount').val());
+	var equalsplit = amount / total;
+	lockText = true;
+	var person_amount = "#person-slider-";
+	var del = "#person-deleted-";
+	lockScroll = true;
+	remain = amount;
+	for (var i=0; i<=total; i++)
+	{
+		if (parseInt($(del+i).val()) != 0) continue;
+		$(person_amount+i).slider("value", 0);
+		last[i] = 0;
+	}
+	lockScroll = false;
+	setMax();
+	lockText = true;
+	for (var i=0; i<=total; i++)
+	{
+		if (parseInt($(del+i).val()) != 0) continue;
+		$(person_amount+i).slider("value", equalsplit);
+	}
+	lockText = false;
 }

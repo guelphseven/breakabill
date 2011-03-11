@@ -65,9 +65,9 @@
 			<div class="clear">&nbsp;</div>
 			<div class="title">Total: </div><div class="field">$<?echo $bill['billAmount'];?></div>
 			<div class="clear">&nbsp;</div>
-			<div class="title">Your Amount: </div><div class="field">$<?echo $bill['ownerAmount'];?></div>
-			<div class="clear">&nbsp;</div>
 			<div class="title">&nbsp;</div><div class="field">&nbsp;</div>
+			<div class="clear">&nbsp;</div>
+			<div class="title">Your Amount: </div><div class="field">$<?echo $bill['ownerAmount'];?></div>
 			<div class="clear">&nbsp;</div>
 <?
 			$tally = $bill['ownerAmount'];
@@ -85,7 +85,9 @@
 			
 			}
 ?>
-			<div class="title">Total:</div><div class="field">$<?echo $diff;?></div>
+			<div class="title">&nbsp;</div><div class="field">&nbsp;</div>
+			<div class="clear">&nbsp;</div>
+			<div class="title">Amount Left:</div><div class="field">$<?echo $diff;?></div>
 			<div class="clear">&nbsp;</div>
 		</div>
 	</div>
