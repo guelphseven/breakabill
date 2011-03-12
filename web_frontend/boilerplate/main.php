@@ -1,9 +1,35 @@
 <?php
+	require_once "../../db/lib.php";
+
 	session_start();
-	if (!isset($_SESSION['username']))
+	if (!isset($_SESSION['username']) || !isset($_SESSION['userhash']))
 	{
-		header("Location: login.php");
-		exit();
+		if (isset($_POST['username']) && isset($_POST['password']))
+		{
+			startSQLConnection();
+			$info = checkLogin($_POST['username'], $_POST['password']);
+			if ($info != false)
+			{
+				session_start();
+				$_SESSION['username'] = $info['username'];
+				$_SESSION['userid'] = $info['id'];
+				$_SESSION['name'] = $info['name'];
+				$_SESSION['email'] = $info['email'];
+				$_SESSION['userhash'] = md5( $info['username'] . $_SESSION['password'] );
+				header("Location: home.php");
+				echo "Logged in";
+			}
+			else
+			{
+				header("Location: login.php");
+				exit();
+			}
+		}
+		else
+		{
+			header("Location: login.php");
+			exit();
+		}
 	}
 ?>
 

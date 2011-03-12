@@ -10,6 +10,7 @@
 		$_SESSION['userid'] = $info['id'];
 		$_SESSION['name'] = $info['name'];
 		$_SESSION['email'] = $info['email'];
+		$_SESSION['userhash'] = md5( $info['username'] . $_SESSION['password'] );
 		header("Location: home.php");
 		echo "Logged in";
 	}
