@@ -1,0 +1,41 @@
++-------------------+
+| Tables_in_billing |
++-------------------+
+| bills             |
+| debtors           |
+| users             |
++-------------------+
+
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| bill_id     | int(11)     | NO   | PRI | NULL    | auto_increment |
+| user_id     | int(11)     | NO   | MUL | NULL    |                |
+| billName    | varchar(64) | NO   |     | NULL    |                |
+| billAmount  | float       | NO   |     | NULL    |                |
+| open        | tinyint(1)  | NO   |     | NULL    |                |
+| ownerAmount | float       | NO   |     | NULL    |                |
+| dueDate     | date        | YES  |     | NULL    |                |
+| makerPaid   | float       | YES  |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| debtor_id | int(11)     | NO   | PRI | NULL    | auto_increment |
+| bill_id   | int(11)     | NO   | MUL | NULL    |                |
+| name      | varchar(64) | NO   |     | NULL    |                |
+| email     | varchar(64) | NO   |     | NULL    |                |
+| amount    | float       | NO   |     | NULL    |                |
+| paid      | float       | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+
+
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| id       | int(11)     | NO   | PRI | NULL    | auto_increment |
+| username | varchar(32) | NO   |     | NULL    |                |
+| hash     | varchar(32) | NO   |     | NULL    |                |
+| name     | varchar(64) | NO   |     | NULL    |                |
+| email    | varchar(64) | NO   |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
